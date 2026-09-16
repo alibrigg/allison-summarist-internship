@@ -1,19 +1,52 @@
 import "./Home.css";
+import { useState } from "react"
 import landing from "../Assets/landing.png";
 import logo from "../Assets/logo.png";
+import document from "../Assets/document.svg";
+import lightbulb from "../Assets/lightbulb.svg";
+import audio from "../Assets/audio.svg";
+import crown from "../Assets/crown.svg";
+import leaf from "../Assets/leaf.svg";
+import Footer from "../Components/Footer";
+import Login from "../Components/Login";
+import SignUp from "../Components/SignUp";
+
 
 
 const Home = () => {
+  const [loginOpen, setLoginOpen] = useState(false);
+const [signUpOpen, setSignUpOpen] = useState(false);
+
 
   return (
     <>
+    {loginOpen && (
+  <Login
+    onClose={() => setLoginOpen(false)}
+    onSignUp={() => {
+      setLoginOpen(false);
+      setSignUpOpen(true);
+    }}
+  />
+)}
+
+{signUpOpen && (
+  <SignUp
+    onClose={() => setSignUpOpen(false)}
+    onLogin={() => {
+      setSignUpOpen(false);
+      setLoginOpen(true);
+    }}
+  />
+)}
+
     <nav className="nav">
       <div className="nav__wrapper">
         <figure className="nav__img--mask">
           <img className="nav__img" src={logo} alt="logo" />
         </figure>
         <ul className="nav__list--wrapper">
-          <li className="nav__list nav__list--login">Login</li>
+          <li className="nav__list nav__list--login" onClick={() => setLoginOpen(true)}>Login</li>
           <li className="nav__list nav__list--mobile">About</li>
           <li className="nav__list nav__list--mobile">Contact</li>
           <li className="nav__list nav__list--mobile">Help</li>
@@ -36,7 +69,7 @@ const Home = () => {
                 <br className="remove--tablet" />
                 and even people who don’t like to read.
               </div>
-              <button className="btn home__cta--btn">Login</button>
+              <button className="btn home__cta--btn" onClick={() => setLoginOpen(true)}>Login</button>
             </div>
             <figure className="landing__image--mask">
               <img src={landing} alt="landing" />
@@ -52,7 +85,7 @@ const Home = () => {
           <div className="features__wrapper">
             <div className="features">
               <div className="features__icon">
-                📄
+                <img className="svg" src={document} alt="document" />
               </div>
               <div className="features__title">Read or listen</div>
               <div className="features__sub--title">
@@ -61,7 +94,7 @@ const Home = () => {
             </div>
             <div className="features">
               <div className="features__icon">
-                💡
+                <img className="svg" src={lightbulb} alt="lightbulb" />
               </div>
               <div className="features__title">Find your next read</div>
               <div className="features__sub--title">
@@ -70,7 +103,7 @@ const Home = () => {
             </div>
             <div className="features">
               <div className="features__icon">
-                🎙️
+                <img className="svg" src={audio} alt="audio" />
               </div>
               <div className="features__title">Briefcasts</div>
               <div className="features__sub--title">
@@ -80,14 +113,14 @@ const Home = () => {
           </div>
           <div className="statistics__wrapper">
             <div className="statistics__content--header">
-              <div className="statistics__heading">Enhance your knowledge</div>
-              <div className="statistics__heading">Achieve greater success</div>
-              <div className="statistics__heading">Improve your health</div>
-              <div className="statistics__heading">
+              <div className="statistics__heading statistics__heading1">Enhance your knowledge</div>
+              <div className="statistics__heading statistics__heading2">Achieve greater success</div>
+              <div className="statistics__heading statistics__heading3">Improve your health</div>
+              <div className="statistics__heading statistics__heading4">
                 Develop better parenting skills
               </div>
-              <div className="statistics__heading">Increase happiness</div>
-              <div className="statistics__heading">
+              <div className="statistics__heading statistics__heading5">Increase happiness</div>
+              <div className="statistics__heading statistics__heading6">
                 Be the best version of yourself!
               </div>
             </div>
@@ -141,12 +174,12 @@ const Home = () => {
             <div
               className="statistics__content--header statistics__content--header-second"
             >
-              <div className="statistics__heading">Expand your learning</div>
-              <div className="statistics__heading">Accomplish your goals</div>
-              <div className="statistics__heading">Strengthen your vitality</div>
-              <div className="statistics__heading">Become a better caregiver</div>
-              <div className="statistics__heading">Improve your mood</div>
-              <div className="statistics__heading">Maximize your abilities</div>
+              <div className="statistics__heading statistics__heading1">Expand your learning</div>
+              <div className="statistics__heading statistics__heading2">Accomplish your goals</div>
+              <div className="statistics__heading statistics__heading3">Strengthen your vitality</div>
+              <div className="statistics__heading statistics__heading4">Become a better caregiver</div>
+              <div className="statistics__heading statistics__heading5">Improve your mood</div>
+              <div className="statistics__heading statistics__heading6">Maximize your abilities</div>
             </div>
           </div>
         </div>
@@ -213,7 +246,7 @@ const Home = () => {
             </div>
           </div>
           <div className="reviews__btn--wrapper">
-            <button className="btn home__cta--btn">Login</button>
+            <button className="btn home__cta--btn" onClick={() => setLoginOpen(true)}>Login</button>
           </div>
         </div>
       </div>
@@ -225,18 +258,14 @@ const Home = () => {
           <div className="numbers__wrapper">
             <div className="numbers">
               <div className="numbers__icon">
-                👑
+                <img className="svg" src={crown} alt="crown" />
               </div>
               <div className="numbers__title">3 Million</div>
               <div className="numbers__sub--title">Downloads on all platforms</div>
             </div>
             <div className="numbers">
-              <div className="numbers__icon numbers__star--icon">
-                ★
-                ★
-                ★
-                ★
-                ⯪
+              <div className="numbers__star--icon">
+                ★★★★⯪
               </div>
               <div className="numbers__title">4.5 Stars</div>
               <div className="numbers__sub--title">
@@ -245,7 +274,7 @@ const Home = () => {
             </div>
             <div className="numbers">
               <div className="numbers__icon">
-                🍃
+                <img className="" src={leaf} alt="leaf" />
               </div>
               <div className="numbers__title">97%</div>
               <div className="numbers__sub--title">
@@ -256,87 +285,7 @@ const Home = () => {
         </div>
       </div>
     </section>
-    <section id="footer">
-      <div className="container">
-        <div className="row">
-          <div className="footer__top--wrapper">
-            <div className="footer__block">
-              <div className="footer__link--title">Actions</div>
-              <div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Summarist Magazine</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Cancel Subscription</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Help</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Contact us</a>
-                </div>
-              </div>
-            </div>
-            <div className="footer__block">
-              <div className="footer__link--title">Useful Links</div>
-              <div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Pricing</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Summarist Business</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Gift Cards</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Authors & Publishers</a>
-                </div>
-              </div>
-            </div>
-            <div className="footer__block">
-              <div className="footer__link--title">Company</div>
-              <div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">About</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Careers</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Partners</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Code of Conduct</a>
-                </div>
-              </div>
-            </div>
-            <div className="footer__block">
-              <div className="footer__link--title">Other</div>
-              <div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Sitemap</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Legal Notice</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Terms of Service</a>
-                </div>
-                <div className="footer__link--wrapper">
-                  <a className="footer__link">Privacy Policies</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="footer__copyright--wrapper">
-            <div className="footer__copyright">
-              Copyright &copy; 2023 Summarist.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Footer />
     </>
   );
 };

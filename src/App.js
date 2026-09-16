@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import Player from './Pages/Player';
 import ChoosePlan from './Pages/ChoosePlan';
 import Settings from './Pages/Settings';
+import './index.css';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/for-you" element={<ForYou />} />
-      <Route path="/book" element={<Book />} />
+      <Route path="/book/:id" element={<Book />} />
       <Route path="/player" element={<Player />} />
       <Route path="/choose-plan" element={<ChoosePlan />} />
       <Route path="/settings" element={<Settings />} />

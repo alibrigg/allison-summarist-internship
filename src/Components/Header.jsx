@@ -1,39 +1,37 @@
-import search from "../Assets/search.png";
-import logo from "../Assets/logo.png";
+import search from "../Assets/search.svg";
 import React, { useState } from "react";
-
+import "./Header.css";
+import logo from "../Assets/logo.png";
+import menu from "../Assets/menu.svg";
 
 
 const Header = () => {
-     const [search, setSearch] = useState("");
-     const searchBooks = () => {
-        if (!search.trim()) return;
-        navigate(`/search/${encodeURIComponent(search)}`);
-    };
 
   return (
-    <nav className="header">
-      <div className="header__wrapper">
-        <figure className="header__img--mask">
-          <img className="header__img" src={logo} alt="logo" />
+    <>
+    <div className="search__background">
+      <div className="search__wrapper">
+        <figure className="search__logo">
+          <img src={logo} alt="" />
         </figure>
-        <div className="header__search--wrapper">
-           <input type="search"
-                                placeholder="Search for books"
-                                value={search}
-                                onChange={(event) => setSearch(event.target.value)}
-                                onKeyDown={(event) => {
-                                    if (event.key === "Enter") {
-                                        searchBooks();
-                                        }
-                                    }}
-                                />
-                            <button onClick={searchBooks}>
-                                <img src={search} alt="Search"/>
-                                </button>
+        <div className="search__content">
+          <div className="search">
+            <div className="search__input--wrapper">
+              <input className="search__input" 
+              placeholder="Search for books" 
+              type="text" value="" />
+              <button className="search__icon">
+                <img src={search} alt="" className="search__icon-img"/>
+              </button>
+            </div>
+          </div>
+          <div className="sidebar__toggle--btn">
+            <img src={menu} alt="" className=""/>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
+    </>
   );
 };
 
