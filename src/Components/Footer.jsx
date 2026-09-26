@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <>
    <section id="footer">
-      <div className="container">
-        <div className="row">
+      <div className="container__footer">
+        <div className="row__footer">
           <div className="footer__top--wrapper">
             <div className="footer__block">
               <div className="footer__link--title">Actions</div>

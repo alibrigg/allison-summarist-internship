@@ -143,3 +143,7 @@
     cursor: pointer;
     transition: opacity .2s;
 }
+
+.auth__error {
+    color: red;
+}

@@ -15,7 +15,7 @@ import SignUp from "../Components/SignUp";
 
 const Home = () => {
   const [loginOpen, setLoginOpen] = useState(false);
-const [signUpOpen, setSignUpOpen] = useState(false);
+  const [signUpOpen, setSignUpOpen] = useState(false);
 
 
   return (

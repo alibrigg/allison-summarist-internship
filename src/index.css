@@ -20,20 +20,3 @@ code {
     font-family: Roboto, sans-serif;
 }
 
-.row {
-    max-width: 1070px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-div {
-    display: block;
-    unicode-bidi: isolate;
-}
-
-
-.container {
-    padding: 40px 0;
-    width: 100%;
-}

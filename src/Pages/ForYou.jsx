@@ -6,6 +6,7 @@ import play from "../Assets/play-button.svg"
 import clock from "../Assets/clock.svg"
 import star from "../Assets/star.svg"
 import { Link } from "react-router-dom";
+import LoggedOut from "../Components/LoggedOutBook.jsx";
 
 
 
@@ -88,8 +89,8 @@ const ForYou = () => {
     <Header />
     <Menu />
      
-    <div className="row">
-      <div className="container">
+    <div className="row__for-you">
+      <div className="container__for-you">
         <div className="for-you__wrapper">
           <div className="for-you__title">Selected just for you</div>
           {foryou.map((data, index) => (

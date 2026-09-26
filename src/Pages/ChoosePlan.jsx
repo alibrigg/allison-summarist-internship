@@ -46,7 +46,7 @@ const handleToggle = (index) => {
     }}
   />
 )}
-    <div className="container">
+    <div className="container__plan">
       <div className="plan__header">
         <h1 className="plan__title"> Get unlimited access to many amazing books to read</h1>
         <p className="plan__pg">Turn ordinary moments into amazing learning opportunities</p>
