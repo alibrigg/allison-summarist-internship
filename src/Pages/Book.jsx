@@ -277,7 +277,7 @@ const handleReadListen = async () => {
           </div>
           <div className="inner-book--img-wrapper">
                
-              <img src={book.imageLink} alt="book image" className="book__img" />
+              <img src={book.imageLink} alt="book cover" className="book__img" />
 
           </div>
         </div>

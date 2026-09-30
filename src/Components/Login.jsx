@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { doc, setDoc } from "firebase/firestore";
 
 const Login = ({ onClose, onSignUp, onSuccess }) => {
-    const [signUpOpen, setSignUpOpen] = useState(false);
+    const [signUpOpen] = useState(false);
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState(""); 
     const [error, setError] = useState("");
@@ -88,7 +88,7 @@ const guestLogin = async () => {
           <div className="auth__title">Log in to Summarist</div>
           <button className="btn guest__btn--wrapper" onClick={guestLogin}>
             <figure className="guest__icon--mask">
-              <img src={Icon} />
+              <img src={Icon} alt="" />
             </figure>
             <div>Login as a Guest</div>
           </button>
