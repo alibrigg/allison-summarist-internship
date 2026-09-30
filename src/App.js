@@ -6,7 +6,6 @@ import Player from './Pages/Player';
 import ChoosePlan from './Pages/ChoosePlan';
 import Settings from './Pages/Settings';
 import ProtectedRoute from "./Components/ProtectedRoute";
-import LoggedOut from "./Components/LoggedOutBook";
 import './index.css';
 
 

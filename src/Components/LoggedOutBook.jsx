@@ -11,7 +11,7 @@ const LoggedOutBook = () => {
     const [loginOpen, setLoginOpen] = useState(false);
     const [signUpOpen, setSignUpOpen] = useState(false);
       const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -84,24 +84,7 @@ const LoggedOutBook = () => {
             <div className="audio__track--author">{book.author}</div>
           </div>
         </div>
-        <div className="audio__controls--wrapper">
-          <div className="audio__controls">
-            <button className="audio__controls--btn">
-              <img className="" />
-            </button>
-            <button className="audio__controls--btn audio__controls--btn-play">
-              <img className="" />
-            </button>
-            <button className="audio__controls--btn">
-              <img className="" />
-            </button>
-          </div>
-        </div>
-        <div className="audio__progress--wrapper">
-          <div className="audio__time">00:00</div>
-          <input type="range" className="audio__progress--bar" value="0" max="204.048"/>
-          <div className="audio__time">03:24</div>
-        </div>
+        
       </div>
     </div>
     )}

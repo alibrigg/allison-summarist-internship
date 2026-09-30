@@ -12,16 +12,16 @@ const Footer = () => {
               <div className="footer__link--title">Actions</div>
               <div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Summarist Magazine</a>
+                  <div className="footer__link">Summarist Magazine</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Cancel Subscription</a>
+                  <div className="footer__link">Cancel Subscription</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Help</a>
+                  <div className="footer__link">Help</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Contact us</a>
+                  <div className="footer__link">Contact us</div>
                 </div>
               </div>
             </div>
@@ -29,16 +29,16 @@ const Footer = () => {
               <div className="footer__link--title">Useful Links</div>
               <div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Pricing</a>
+                  <div className="footer__link">Pricing</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Summarist Business</a>
+                  <div className="footer__link">Summarist Business</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Gift Cards</a>
+                  <div className="footer__link">Gift Cards</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Authors & Publishers</a>
+                  <div className="footer__link">Authors & Publishers</div>
                 </div>
               </div>
             </div>
@@ -46,16 +46,16 @@ const Footer = () => {
               <div className="footer__link--title">Company</div>
               <div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">About</a>
+                  <div className="footer__link">About</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Careers</a>
+                  <div className="footer__link">Careers</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Partners</a>
+                  <div className="footer__link">Partners</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Code of Conduct</a>
+                  <div className="footer__link">Code of Conduct</div>
                 </div>
               </div>
             </div>
@@ -63,16 +63,16 @@ const Footer = () => {
               <div className="footer__link--title">Other</div>
               <div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Sitemap</a>
+                  <div className="footer__link">Sitemap</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Legal Notice</a>
+                  <div className="footer__link">Legal Notice</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Terms of Service</a>
+                  <div className="footer__link">Terms of Service</div>
                 </div>
                 <div className="footer__link--wrapper">
-                  <a className="footer__link">Privacy Policies</a>
+                  <div className="footer__link">Privacy Policies</div>
                 </div>
               </div>
             </div>
