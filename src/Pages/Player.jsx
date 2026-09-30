@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 const Player = () => {
   const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const { id } = useParams();
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);

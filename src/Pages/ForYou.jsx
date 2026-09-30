@@ -179,7 +179,7 @@ const SkeletonSelectedBook = () => {
           <figure className="book__image--wrapper">
             <img
               src={data.imageLink}
-              alt="book image"
+              alt="book cover"
               className="selected__book-img"
             />
           </figure>
@@ -229,7 +229,7 @@ const SkeletonSelectedBook = () => {
                       </div>
                     )}
                 <figure className="book__image--wrapper">
-                  <img className="book__image" src={data.imageLink} alt="book image" />
+                  <img className="book__image" src={data.imageLink} alt="book cover" />
                 </figure>
                 <div className="recommended__book--title">{data.title}</div>
                 <div className="recommended__book--author">{data.author}</div>
@@ -269,7 +269,7 @@ const SkeletonSelectedBook = () => {
                       </div>
                     )}
                     <figure className="book__image--wrapper">
-                      <img className="book__image" src={data.imageLink} alt="book image" />
+                      <img className="book__image" src={data.imageLink} alt="book cover" />
                     </figure>
                     <div className="recommended__book--title">{data.title}</div>
                     <div className="recommended__book--author">{data.author}</div>
