@@ -8,7 +8,7 @@ import { signInWithEmailAndPassword, signInAnonymously } from "firebase/auth";
 import { useNavigate } from "react-router-dom"
 import { doc, setDoc } from "firebase/firestore";
 
-const Login = ({ onClose, onSignUp }) => {
+const Login = ({ onClose, onSignUp, onSuccess }) => {
     const [signUpOpen, setSignUpOpen] = useState(false);
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState(""); 
@@ -24,11 +24,18 @@ const Login = ({ onClose, onSignUp }) => {
     .then((userCredential) => {
       console.log("User logged in:", userCredential.user);
 
-      onClose();
-      navigate("/for-you");
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        onClose();
+        navigate("/for-you");
+      }
     })
     .catch((error) => {
       console.error("Firebase login error:", error.code, error.message);
+      console.log("LOGIN ERROR:", error);
+    console.log("ERROR CODE:", error.code);
+
 
       if (error.code === "auth/invalid-email") {
         setError("Please enter a valid email address.");

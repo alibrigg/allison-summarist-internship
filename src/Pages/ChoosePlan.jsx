@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 import React, { useState } from "react";
 import Login from "../Components/Login";
 import SignUp from "../Components/SignUp";
-
+import { auth } from "../firebase/init";
 
 
 const ChoosePlan = () => {
@@ -18,10 +18,59 @@ const ChoosePlan = () => {
   const [signUpOpen, setSignUpOpen] = useState(false);
 
 
-
 const handleToggle = (index) => {
   setActiveFaq(activeFaq === index ? null : index);
   setActiveIcon(activeIcon === index ? null : index);
+};
+
+const handleCheckout = () => {
+  if (!selectedPlan) {
+    alert("Please select a plan first.");
+    return;
+  }
+
+  if (auth.currentUser) {
+    goToStripeCheckout();
+  } else {
+    setLoginOpen(true);
+  }
+};
+
+const goToStripeCheckout = async () => {
+  try {
+    const response = await fetch(
+      "https://createcheckoutsession-jzvuhgmndq-uc.a.run.app",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uid: auth.currentUser.uid,
+          plan: selectedPlan,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    console.log("Firebase response:", data);
+    console.log("Stripe URL:", data.url);
+
+    if (!response.ok) {
+      console.error("Firebase error:", data);
+      return;
+    }
+
+    if (!data.url) {
+      console.error("No Stripe URL returned:", data);
+      return;
+    }
+
+    window.location.href = data.url;
+  } catch (error) {
+    console.error("Stripe checkout error:", error);
+  }
 };
 
 
@@ -34,6 +83,10 @@ const handleToggle = (index) => {
       setLoginOpen(false);
       setSignUpOpen(true);
     }}
+    onSuccess={() => {
+    setLoginOpen(false);
+    goToStripeCheckout();
+  }}
   />
 )}
 
@@ -44,6 +97,10 @@ const handleToggle = (index) => {
       setSignUpOpen(false);
       setLoginOpen(true);
     }}
+    onSuccess={() => {
+    setSignUpOpen(false);
+    goToStripeCheckout();
+  }}
   />
 )}
     <div className="container__plan">
@@ -110,9 +167,9 @@ const handleToggle = (index) => {
           
           </li>
         </ul>
-        <div class="plan__card--cta">
-          <span class="btn--wrapper">
-            <button class="plan__choices-btn" onClick={() => setLoginOpen(true)}>
+        <div className="plan__card--cta">
+          <span className="btn--wrapper">
+            <button className="plan__choices-btn" onClick={handleCheckout}>
               <span className="plan__choices-btn">
                 {selectedPlan === "monthly"
                   ? "Start your first month"
@@ -120,7 +177,7 @@ const handleToggle = (index) => {
               </span>
             </button>
           </span>
-          <div class="plan__trial-text">
+          <div className="plan__trial-text">
             {selectedPlan === "monthly"
                   ? "30-day money back guarantee, no questions asked."
                   : "Cancel your trial at any time before it ends, and you won’t be charged."}

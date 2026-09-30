@@ -6,7 +6,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ onClose, onLogin }) => { 
+const SignUp = ({ onClose, onLogin, onSuccess }) => { 
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState(""); 
     const [error, setError] = useState("");
@@ -35,8 +35,12 @@ const SignUp = ({ onClose, onLogin }) => {
 
         console.log("User created in Firestore!");
 
+        if (onSuccess) {
+        onSuccess();
+      } else {
         onClose();
         navigate("/for-you");
+      }
 
     } catch (error) {
         console.log("Firebase error:", error);

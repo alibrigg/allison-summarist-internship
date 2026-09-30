@@ -4,11 +4,36 @@ import SignUp from "./SignUp";
 import Header from "./Header";
 import "./LoggedOutBook.css";
 import Menu from "./Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const LoggedOutBook = () => {
     const [loginOpen, setLoginOpen] = useState(false);
     const [signUpOpen, setSignUpOpen] = useState(false);
+      const [book, setBook] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+
+  useEffect(() => {
+      async function fetchBook() {
+        try {
+          setLoading(true);
+  
+          const response = await fetch(
+            `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
+          );
+  
+          const bookData = await response.json();
+   setBook(bookData);
+        } catch (error) {
+          console.error("Error fetching book:", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+  
+      fetchBook();
+    }, [id]);
 
   return (
      <>
@@ -34,28 +59,29 @@ const LoggedOutBook = () => {
    
     <Header />
     <Menu />
+    {book && (
     <div className="summary">
       <div className="audio__book--summary">
         <div className="audio__book--summary-title">
-          <b>How to Win Friends and Influence People in the Digital Age</b>
+          <b>{book.title}</b>
         </div>
         <div className="settings__login--wrapper">
-          <img alt="login" src={login}/>
+          <img alt="login" src={login} className="settings__login--wrapper-img"/>
           <div className="settings__login--text">Log in to your account to read and listen to the book</div>
           <button className="btn settings__login--btn"  onClick={() => setLoginOpen(true)}>Login</button>
         </div>
       </div>
       <div className="audio__wrapper">
-        <audio src=""></audio>
+        <audio src={book.audioLink} ></audio>
         <div className="audio__track--wrapper">
           <figure className="audio__track--image-mask">
             <figure className="book__image--wrapper">
-              <img className="book__image"  alt="book"/>
+              <img className="book__image"  alt="book" src={book.imageLink}/>
             </figure>
           </figure>
           <div className="audio__track--details-wrapper">
-            <div className="audio__track--title">How to Win Friends and Influence People in the Digital Age</div>
-            <div className="audio__track--author">Dale Carnegie</div>
+            <div className="audio__track--title">{book.title}</div>
+            <div className="audio__track--author">{book.author}</div>
           </div>
         </div>
         <div className="audio__controls--wrapper">
@@ -78,6 +104,7 @@ const LoggedOutBook = () => {
         </div>
       </div>
     </div>
+    )}
     </>
   );
 };

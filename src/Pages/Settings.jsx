@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Header from "../Components/Header";
-import Menu from "../Components/Menu";
 import "./Settings.css";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
@@ -46,6 +45,24 @@ const Settings = () => {
     return () => unsubscribe();
   }, []);
 
+  const SettingsSkeleton = () => {
+  return (
+    <div className="settings__skeleton">
+
+      <div className="settings__skeleton--section">
+        <div className="skeleton skeleton--subtitle"></div>
+        <div className="skeleton skeleton--text"></div>
+      </div>
+
+      <div className="settings__skeleton--section">
+        <div className="skeleton skeleton--subtitle"></div>
+        <div className="skeleton skeleton--text"></div>
+      </div>
+
+    </div>
+  );
+};
+
   return (
     <>
       {loginOpen && (
@@ -67,8 +84,6 @@ const Settings = () => {
           }}
         />
       )}
-
-      <Menu />
       <Header />
 
       <div className="container__settings">
@@ -76,7 +91,7 @@ const Settings = () => {
           <div className="page__title">Settings</div>
 
           {loading ? (
-            <div>Loading...</div>
+            <SettingsSkeleton />
           ) : !user ? (
             <div className="settings__login--wrapper">
               <img className="settings__login--wrapper-img" alt="login" src={login} />

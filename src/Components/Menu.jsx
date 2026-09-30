@@ -14,7 +14,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/init";
 
 
-const Menu = () => {
+const Menu = ({ menuOpen, setMenuOpen }) => {
     const [loginOpen, setLoginOpen] = useState(false);
     const [signUpOpen, setSignUpOpen] = useState(false);
     const [user, setUser] = useState(null);
@@ -40,90 +40,120 @@ const handleAuthClick = async () => {
   }
 };
 
-  return (
-    <>
+ return (
+  <>
     {loginOpen && (
-  <Login
-    onClose={() => setLoginOpen(false)}
-    onSignUp={() => {
-      setLoginOpen(false);
-      setSignUpOpen(true);
-    }}
-  />
-)}
+      <Login
+        onClose={() => setLoginOpen(false)}
+        onSignUp={() => {
+          setLoginOpen(false);
+          setSignUpOpen(true);
+        }}
+      />
+    )}
 
-{signUpOpen && (
-  <SignUp
-    onClose={() => setSignUpOpen(false)}
-    onLogin={() => {
-      setSignUpOpen(false);
-      setLoginOpen(true);
-    }}
-  />
-)}
-    <div className="sidebar sidebar--closed">
-        <div className="sidebar__logo">
-            <img src={logo} alt="" className=".sidebar__logo-img" />
-        </div>
-            <div className="sidebar__wrapper">
-                <div className="sidebar__top">
-                    <a className="sidebar__link--wrapper" href="/for-you">
-                        <div className="sidebar__link--line "></div>
-                        <div className="sidebar__icon--wrapper">
-                            <img src={home} alt="" className="sidebar__icon-img" />
-                        </div>
-                        <div className="sidebar__link--text">For you</div>
-                    </a>
-                    <a className="sidebar__link--wrapper" href="/library">
-                        <div className="sidebar__link--line "></div>
-                        <div className="sidebar__icon--wrapper">
-                            <img src={bookmark} alt="" className="sidebar__icon-img"/>
-                        </div>
-                        <div className="sidebar__link--text">My Library</div>
-                    </a>
-                    <div className="sidebar__link--wrapper sidebar__link--not-allowed">
-                        <div className="sidebar__link--line "></div>
-                        <div className="sidebar__icon--wrapper">
-                            <img src={pen} alt="" className="sidebar__icon-img"/>
-                        </div>
-                        <div className="sidebar__link--text">Highlights</div>
-                    </div>
-                    <div className="sidebar__link--wrapper sidebar__link--not-allowed">
-                        <div className="sidebar__link--line "></div>
-                        <div className="sidebar__icon--wrapper">
-                            <img src={search} alt="" className="sidebar__icon-img"/>
-                        </div>
-                        <div className="sidebar__link--text">Search</div>
-                    </div>
-                </div>
-                <div className="sidebar__bottom">
-                    <a className="sidebar__link--wrapper" href="/settings">
-                        <div className="sidebar__link--line "></div>
-                        <div className="sidebar__icon--wrapper">
-                            <img src={settings} alt="" className="sidebar__icon-img"/>
-                        </div>
-                        <div className="sidebar__link--text">Settings</div>
-                    </a>
-                    <div className="sidebar__link--wrapper sidebar__link--not-allowed">
-                        <div className="sidebar__link--line "></div>
-                        <div className="sidebar__icon--wrapper">
-                            <img src={question} alt="" className="sidebar__icon-img"/>
-                        </div><div className="sidebar__link--text">Help & Support</div>
-                    </div>
-                    <div className="sidebar__link--wrapper" onClick={handleAuthClick}>
-                        <div className="sidebar__link--line"></div>
-                        <div className="sidebar__icon--wrapper">
-                            <img src={logout} alt=""  className="sidebar__icon-img"/>
-                        </div>
-                        <div className="sidebar__link--text">
-                            {user ? "Logout" : "Login"}
-                        </div>
-                    </div>
-                </div>
+    {signUpOpen && (
+      <SignUp
+        onClose={() => setSignUpOpen(false)}
+        onLogin={() => {
+          setSignUpOpen(false);
+          setLoginOpen(true);
+        }}
+      />
+    )}
+
+    <div className={`sidebar ${menuOpen ? "sidebar--open" : ""}`}>
+
+      <button
+        className="sidebar__close"
+        onClick={() => setMenuOpen(false)}
+      >
+        ×
+      </button>
+
+      <div className="sidebar__logo">
+        <img src={logo} alt="Summarist" className="sidebar__logo-img" />
+      </div>
+
+      <div className="sidebar__wrapper">
+
+        <div className="sidebar__top">
+
+          <a className="sidebar__link--wrapper" href="/for-you">
+            <div className="sidebar__link--line"></div>
+            <div className="sidebar__icon--wrapper">
+              <img src={home} alt="" className="sidebar__icon-img" />
             </div>
+            <div className="sidebar__link--text">For you</div>
+          </a>
+
+          <div className="sidebar__link--wrapper" href="/library">
+            <div className="sidebar__link--line"></div>
+            <div className="sidebar__icon--wrapper">
+              <img src={bookmark} alt="" className="sidebar__icon-img" />
+            </div>
+            <div className="sidebar__link--text sidebar__link--not-allowed">My Library</div>
+          </div>
+
+          <div className="sidebar__link--wrapper sidebar__link--not-allowed">
+            <div className="sidebar__link--line"></div>
+            <div className="sidebar__icon--wrapper">
+              <img src={pen} alt="" className="sidebar__icon-img" />
+            </div>
+            <div className="sidebar__link--text">Highlights</div>
+          </div>
+
+          <div className="sidebar__link--wrapper sidebar__link--not-allowed">
+            <div className="sidebar__link--line"></div>
+            <div className="sidebar__icon--wrapper">
+              <img src={search} alt="" className="sidebar__icon-img" />
+            </div>
+            <div className="sidebar__link--text">Search</div>
+          </div>
+
+        </div>
+
+        <div className="sidebar__bottom">
+
+          <a className="sidebar__link--wrapper" href="/settings">
+            <div className="sidebar__link--line"></div>
+            <div className="sidebar__icon--wrapper">
+              <img src={settings} alt="" className="sidebar__icon-img" />
+            </div>
+            <div className="sidebar__link--text">Settings</div>
+          </a>
+
+          <div className="sidebar__link--wrapper sidebar__link--not-allowed">
+            <div className="sidebar__link--line"></div>
+            <div className="sidebar__icon--wrapper">
+              <img src={question} alt="" className="sidebar__icon-img" />
+            </div>
+            <div className="sidebar__link--text">
+              Help & Support
+            </div>
+          </div>
+
+          <div
+            className="sidebar__link--wrapper"
+            onClick={handleAuthClick}
+          >
+            <div className="sidebar__link--line"></div>
+
+            <div className="sidebar__icon--wrapper">
+              <img src={logout} alt="" className="sidebar__icon-img" />
+            </div>
+
+            <div className="sidebar__link--text">
+              {user ? "Logout" : "Login"}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
-    </>
-  );
-};
+  </>
+);
+}
 
 export default Menu;

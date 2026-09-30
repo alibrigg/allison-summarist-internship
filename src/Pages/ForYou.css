@@ -83,7 +83,6 @@
 .selected-book__icon-img {
     width: 100%;
     height: 100%;
-    background-color: #000;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -190,4 +189,154 @@
     align-items: center;
     border-radius: 20px;
     z-index: 10;
+}
+
+.skeleton__book {
+  width: 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton__image {
+  width: 100%;
+  height: 200px;
+  border-radius: 4px;
+  background: #e5e5e5;
+}
+
+.skeleton__content {
+  padding-top: 12px;
+}
+
+.skeleton__title {
+  width: 80%;
+  height: 16px;
+  border-radius: 4px;
+  background: #e5e5e5;
+  margin-bottom: 8px;
+}
+
+.skeleton__author {
+  width: 60%;
+  height: 13px;
+  border-radius: 4px;
+  background: #e5e5e5;
+  margin-bottom: 8px;
+}
+
+.skeleton__subtitle {
+  width: 90%;
+  height: 12px;
+  border-radius: 4px;
+  background: #e5e5e5;
+}
+
+.skeleton__details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.skeleton__detail {
+  width: 35px;
+  height: 12px;
+  border-radius: 4px;
+  background: #e5e5e5;
+}
+
+.skeleton__selected {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.skeleton__selected-subtitle {
+  width: 40%;
+  height: 16px;
+  background: #e5e5e5;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.skeleton__selected-content {
+  display: flex;
+  gap: 24px;
+}
+
+.skeleton__selected-image {
+  width: 160px;
+  height: 230px;
+  background: #e5e5e5;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.skeleton__selected-text {
+  flex: 1;
+  padding-top: 10px;
+}
+
+.skeleton__selected-title {
+  width: 80%;
+  height: 22px;
+  background: #e5e5e5;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.skeleton__selected-author {
+  width: 50%;
+  height: 16px;
+  background: #e5e5e5;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+
+.skeleton__selected-duration {
+  width: 100px;
+  height: 14px;
+  background: #e5e5e5;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container__for-you {
+    margin-left: 20px;
+  }
+
+  .selected__book {
+      padding: 16px;
+      width: 100%;
+      flex-direction: column;
+      gap: 24px;
+  }
+
+      .selected__book--sub-title {
+        width: 100%;
+        font-size: 14px;
+      }
+
+  .selected__book--line {
+        display: none;
+    }
+
+    .selected__book--content, .selected__book--text {
+        width: 100%;
+    }
+
+
+
 }

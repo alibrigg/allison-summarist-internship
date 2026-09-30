@@ -26,7 +26,7 @@ function App() {
           <Book />
         </ProtectedRoute>
         } />
-      <Route path="/player" element={<Player />} />
+      <Route path="/player/:id" element={<Player />} />
       <Route path="/choose-plan" element={<ChoosePlan />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>
